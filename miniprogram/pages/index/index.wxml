@@ -1,0 +1,20 @@
+<!-- index.wxml -->
+<view class="container">
+  <img src="../common/img/bg.png" alt="" class="background" />
+  <view class="title">温馨提示</view>
+  <view class="photo">
+    <img src="" alt="" />
+  </view>
+  <view class="article">
+    喂！三点钟啦！做乜野啊做！
+    <view class="largeTitle">饮茶先啊</view>
+  </view>
+  <navigator url="/pages/drinkDetail/index" hover-class="none">
+    <view class="button">点击饮茶🫖</view>
+  </navigator>
+  <view class="uploader">
+    <navigator url="../serverapi/serverapi" open-type="navigate" class="uploader-text">
+      <text>服务端调用</text>
+    </navigator>
+  </view>
+</view>

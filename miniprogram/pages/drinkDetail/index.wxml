@@ -1,0 +1,12 @@
+<view class="com">
+    <view class="title">做工辛苦啦！饮杯茶吧！</view>
+    <view class="teaList">
+        <view class="teaItem" wx:for="{{tesList}}" wx:for-item="item">
+            <!-- <view class="img" alt=""></view> -->
+            <image class="img"  src="{{item.imgUrl}}" alt=""/>
+            <view class="text">{{item.text}}</view>
+        </view>
+    </view>
+    <view class="kon"></view>
+    <!-- <img class="kon" src="../common/img/kon.png" alt=""/> -->
+</view>
