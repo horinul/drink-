@@ -5,24 +5,25 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.log(event)
-  switch (event.action) {
-    case 'requestSubscribeMessage': {
-      return requestSubscribeMessage(event)
-    }
-    case 'sendSubscribeMessage': {
-      return sendSubscribeMessage(event)
-    }
-    case 'getWXACode': {
-      return getWXACode(event)
-    }
-    case 'getOpenData': {
-      return getOpenData(event)
-    }
-    default: {
-      return
-    }
-  }
+  return sendSubscribeMessage(event)
+  // console.log(event)
+  // switch (event.action) {
+  //   case 'requestSubscribeMessage': {
+  //     return requestSubscribeMessage(event)
+  //   }
+  //   case 'sendSubscribeMessage': {
+  //     return sendSubscribeMessage(event)
+  //   }
+  //   case 'getWXACode': {
+  //     return getWXACode(event)
+  //   }
+  //   case 'getOpenData': {
+  //     return getOpenData(event)
+  //   }
+  //   default: {
+  //     return
+  //   }
+  // }
 }
 
 async function requestSubscribeMessage(event) {
@@ -32,55 +33,87 @@ async function requestSubscribeMessage(event) {
 }
 
 async function sendSubscribeMessage(event) {
-  const { OPENID } = cloud.getWXContext()
+  try{
+    const db= wx.cloud.database()
+    const msg=db.collection('idList').where({
+      need:'0'
+    }).get()
+    const { open_id } = cloud.getWXContext()
 
-  const { templateId } = event
+    const { templateId } = event
+    console.info(templateId)
 
-  const sendResult = await cloud.openapi.subscribeMessage.send({
-    touser: OPENID,
-    templateId,
-    miniprogram_state: 'developer',
-    page: 'pages/openapi/openapi',
-    // 此处字段应修改为所申请模板所要求的字段
-    data: {
-      thing2: {
-        value: '点击查看详情',
-      },
-      thing12: {
-        value: 'test111',
-      },
-    }
-  })
-
-  return sendResult
-}
-
-async function getWXACode(event) {
-  // 此处将获取永久有效的小程序码，并将其保存在云文件存储中，最后返回云文件 ID 给前端使用
-
-  const wxacodeResult = await cloud.openapi.wxacode.get({
-    path: 'pages/openapi/openapi',
-  })
-
-  const fileExtensionMatches = wxacodeResult.contentType.match(/\/([^/]+)/)
-  const fileExtension = (fileExtensionMatches && fileExtensionMatches[1]) || 'jpg'
-
-  const uploadResult = await cloud.uploadFile({
-    // 云文件路径，此处为演示采用一个固定名称
-    cloudPath: `wxacode_default_openapi_page.${fileExtension}`,
-    // 要上传的文件内容可直接传入图片 Buffer
-    fileContent: wxacodeResult.buffer,
-  })
-
-  if (!uploadResult.fileID) {
-    throw new Error(`upload failed with empty fileID and storage server status code ${uploadResult.statusCode}`)
+    const sendPromises = msg.data.map(async message => {
+      try {
+        // 发送订阅消息
+        await cloud.openapi.subscribeMessage.send({
+          touser: open_id,
+          page: 'pages/openapi/openapi',
+          data: {
+            thing2: {
+              value: '点击查看详情',
+            },
+            thing12: {
+              value: 'test111',
+            },
+          },
+          template_id:templateId
+        });
+        // 发送成功后将消息的状态改为已发送
+        return db
+          .collection('messages')
+          .doc(message._id)
+          .update({
+            data: {
+              done: true,
+            },
+          });
+      } catch (e) {
+        return e;
+      }
+    })
+    return sendPromises
+  }catch(e){
+    console.error(e)
   }
-
-  return uploadResult.fileID
 }
+// sendSubscribeMessage(e) {
+//   this.setData({
+//     subscribeMessageResult: "",
+//   });
 
-async function getOpenData(event) {
-  return cloud.getOpenData({
-    list: event.openData.list,
-  })
-}
+//   wx.cloud.callFunction({
+//     name: "openapi",
+//     data: {
+//       action: "sendSubscribeMessage",
+//       templateId: this.data.templateId,
+//     },
+//     success: (res) => {
+//       console.warn(
+//         "[云函数] [openapi] subscribeMessage.send 调用成功：",
+//         res
+//       );
+//       wx.showModal({
+//         title: "发送成功",
+//         content: "请返回微信主界面查看",
+//         showCancel: false,
+//       });
+//       wx.showToast({
+//         title: "发送成功，请返回微信主界面查看",
+//       });
+//       this.setData({
+//         subscribeMessageResult: JSON.stringify(res.result),
+//       });
+//     },
+//     fail: (err) => {
+//       wx.showToast({
+//         icon: "none",
+//         title: "调用失败",
+//       });
+//       console.error(
+//         "[云函数] [openapi] subscribeMessage.send 调用失败：",
+//         err
+//       );
+//     },
+//   });
+// },
