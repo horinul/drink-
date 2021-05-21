@@ -12,9 +12,7 @@
   <navigator url="/pages/drinkDetail/index" hover-class="none">
     <view class="button">点击饮茶🫖</view>
   </navigator>
-  <view class="uploader">
-    <navigator url="../serverapi/serverapi" open-type="navigate" class="uploader-text">
-      <text>服务端调用</text>
-    </navigator>
-  </view>
+  <navigator url="../serverapi/serverapi" open-type="navigate" class="uploader-text">
+    <view class="button">提醒饮茶🍵</view>
+  </navigator>
 </view>
