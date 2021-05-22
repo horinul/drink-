@@ -1,5 +1,6 @@
 <view class="container">
   <view class="list">
     <view class="list-item" bind:tap="requestSubscribeMessage">发起提醒</view>
+    <view class="list-item" bind:tap="submitSubscribeMessageForm">test</view>
   </view>
 </view>

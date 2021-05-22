@@ -5,25 +5,18 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  return sendSubscribeMessage(event)
   // console.log(event)
-  // switch (event.action) {
-  //   case 'requestSubscribeMessage': {
-  //     return requestSubscribeMessage(event)
-  //   }
-  //   case 'sendSubscribeMessage': {
-  //     return sendSubscribeMessage(event)
-  //   }
-  //   case 'getWXACode': {
-  //     return getWXACode(event)
-  //   }
-  //   case 'getOpenData': {
-  //     return getOpenData(event)
-  //   }
-  //   default: {
-  //     return
-  //   }
-  // }
+  switch (event.action) {
+    case 'requestSubscribeMessage': {
+      return requestSubscribeMessage(event)
+    }
+    case 'sendSubscribeMessage': {
+      return sendSubscribeMessage(event)
+    }
+    default: {
+      return
+    }
+  }
 }
 
 async function requestSubscribeMessage(event) {
@@ -34,20 +27,24 @@ async function requestSubscribeMessage(event) {
 
 async function sendSubscribeMessage(event) {
   try{
-    const db= wx.cloud.database()
-    const msg=db.collection('idList').where({
+    const db= cloud.database()
+    const msg
+    const msg=await db.collection('idList').where({
       need:'0'
-    }).get()
-    const { open_id } = cloud.getWXContext()
+    }).get({
+      success:function(res){
+        return res
+      }
+    })
+    const { OPENID } = cloud.getWXContext()
 
-    const { templateId } = event
-    console.info(templateId)
+    console.info(msg.data)
 
     const sendPromises = msg.data.map(async message => {
       try {
         // 发送订阅消息
         await cloud.openapi.subscribeMessage.send({
-          touser: open_id,
+          touser: OPENID,
           page: 'pages/openapi/openapi',
           data: {
             thing2: {
@@ -57,7 +54,7 @@ async function sendSubscribeMessage(event) {
               value: 'test111',
             },
           },
-          template_id:templateId
+          template_id:'rcv57r2mZ3NeH6HlZtvPKi8zRgMWGIy1sUD0tWB03io'
         });
         // 发送成功后将消息的状态改为已发送
         return db
@@ -65,7 +62,7 @@ async function sendSubscribeMessage(event) {
           .doc(message._id)
           .update({
             data: {
-              done: true,
+              need:'1'
             },
           });
       } catch (e) {

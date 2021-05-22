@@ -11,12 +11,5 @@
       "templateMessage.getTemplateLibraryById",
       "templateMessage.getTemplateLibraryList"
     ]
-  },
-  "triggers":[
-    {
-      "name":"timer",
-      "type":"timer",
-      "config":"*/2 * * * * * *"
-    }
-  ]
+  }
 }
