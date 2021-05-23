@@ -9,7 +9,11 @@ Page({
   },
 
   async requestSubscribeMessage() {
-    const templateId = "rcv57r2mZ3NeH6HlZtvPKi8zRgMWGIy1sUD0tWB03io";
+    const templateId = [
+      "rcv57r2mZ3NeH6HlZtvPKi5-jfsc642tKIJOcQUzTgA",
+      "rcv57r2mZ3NeH6HlZtvPKs86NnxzCxmOX8dOvXS-9Co",
+      "rcv57r2mZ3NeH6HlZtvPKq3cmQf7aVMaGA4h1XxsXBI",
+    ];
     if (!templateId) {
       wx.showModal({
         title: "获取失败",
@@ -17,26 +21,30 @@ Page({
         showCancel: false,
       });
     }
-    const db=wx.cloud.database()
+    const db = wx.cloud.database();
     if (templateId) {
       wx.requestSubscribeMessage({
-        tmplIds: [templateId],
+        tmplIds: [
+         'rcv57r2mZ3NeH6HlZtvPKi5-jfsc642tKIJOcQUzTgA',
+         'kC6Ow7pgrI95TPJsAh59yrQt5UxogPVs4tatKYuAcbA',
+         'h2pJLutQtzwB74qH5tqhOqZ2xE0H9frJZRLWfPs0EsU'
+        ],
         success: (res) => {
           if (res[templateId] === "accept") {
             this.setData({
               requestSubscribeMessageResult: "成功",
             });
-            db.collection('idList').add({
-              data:{
-                need:'0'
+            db.collection("idList").add({
+              data: {
+                need: "0",
               },
-              success(res){
-                console.info('success:',res)
+              success(res) {
+                console.info("success:", res);
               },
-              fail(err){
-                console.error('error:',err)
-              }
-            })
+              fail(err) {
+                console.error("error:", err);
+              },
+            });
           } else {
             this.setData({
               requestSubscribeMessageResult: `失败（${res[templateId]}）`,
@@ -51,7 +59,105 @@ Page({
       });
     }
   },
-
+  async requestSubscribeMessage1() {
+    const templateId = [
+      "rcv57r2mZ3NeH6HlZtvPKi5-jfsc642tKIJOcQUzTgA",
+      "rcv57r2mZ3NeH6HlZtvPKs86NnxzCxmOX8dOvXS-9Co",
+      "rcv57r2mZ3NeH6HlZtvPKq3cmQf7aVMaGA4h1XxsXBI",
+    ];
+    if (!templateId) {
+      wx.showModal({
+        title: "获取失败",
+        content: "提醒不存在",
+        showCancel: false,
+      });
+    }
+    const db = wx.cloud.database();
+    if (templateId) {
+      wx.requestSubscribeMessage({
+        tmplIds: [
+         'WVe-ZbI39-WLG2w3e-cQsdhlWyuJPouGrhJTZDAtmrc',
+         'WDAd3d2yWD8bi4K0YTjuXtaFEmyzyYSzYOsvVgZLwX4'
+        ],
+        success: (res) => {
+          if (res[templateId] === "accept") {
+            this.setData({
+              requestSubscribeMessageResult: "成功",
+            });
+            db.collection("idList").add({
+              data: {
+                need: "0",
+              },
+              success(res) {
+                console.info("success:", res);
+              },
+              fail(err) {
+                console.error("error:", err);
+              },
+            });
+          } else {
+            this.setData({
+              requestSubscribeMessageResult: `失败（${res[templateId]}）`,
+            });
+          }
+        },
+        fail: (err) => {
+          this.setData({
+            requestSubscribeMessageResult: `失败（${JSON.stringify(err)}）`,
+          });
+        },
+      });
+    }
+  },
+  async requestSubscribeMessage2() {
+    const templateId = [
+      'bPBS4BX4GdkUFmfuU_vhbMlTQ8fCeXzIuPTatyl1iMk',
+      'iCPBBBC4o29WwNwWkA4ICAoRv8kyzN59GOcmc2Vn7Oo'
+    ];
+    if (!templateId) {
+      wx.showModal({
+        title: "获取失败",
+        content: "提醒不存在",
+        showCancel: false,
+      });
+    }
+    const db = wx.cloud.database();
+    if (templateId) {
+      wx.requestSubscribeMessage({
+        tmplIds: [
+          'bPBS4BX4GdkUFmfuU_vhbMlTQ8fCeXzIuPTatyl1iMk',
+          'iCPBBBC4o29WwNwWkA4ICAoRv8kyzN59GOcmc2Vn7Oo'
+        ],
+        success: (res) => {
+          if (res[templateId] === "accept") {
+            this.setData({
+              requestSubscribeMessageResult: "成功",
+            });
+            db.collection("idList").add({
+              data: {
+                need: "0",
+              },
+              success(res) {
+                console.info("success:", res);
+              },
+              fail(err) {
+                console.error("error:", err);
+              },
+            });
+          } else {
+            this.setData({
+              requestSubscribeMessageResult: `失败（${res[templateId]}）`,
+            });
+          }
+        },
+        fail: (err) => {
+          this.setData({
+            requestSubscribeMessageResult: `失败（${JSON.stringify(err)}）`,
+          });
+        },
+      });
+    }
+  },
   sendSubscribeMessage(e) {
     this.setData({
       subscribeMessageResult: "",
@@ -100,7 +206,7 @@ Page({
 
     wx.cloud.callFunction({
       name: "openapi",
-      config:{ env:'cloud1-5gde52mzca59cee4'},
+      config: { env: "cloud1-5gde52mzca59cee4" },
       data: {
         action: "sendSubscribeMessage",
         formId: e.detail.formId,
