@@ -1,77 +1,82 @@
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require("wx-server-sdk");
 
-cloud.init()
+cloud.init();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  return sendSubscribeMessage(event);
   // console.log(event)
-  switch (event.action) {
-    case 'requestSubscribeMessage': {
-      return requestSubscribeMessage(event)
-    }
-    case 'sendSubscribeMessage': {
-      return sendSubscribeMessage(event)
-    }
-    default: {
-      return
-    }
-  }
-}
+  // switch (event.action) {
+  //   case 'requestSubscribeMessage': {
+  //     return requestSubscribeMessage(event)
+  //   }
+  //   case 'sendSubscribeMessage': {
+  //     return sendSubscribeMessage(event)
+  //   }
+  //   default: {
+  //     return
+  //   }
+  // }
+};
 
 async function requestSubscribeMessage(event) {
   // 此处为模板 ID，开发者需要到小程序管理后台 - 订阅消息 - 公共模板库中添加模板，
   // 然后在我的模板中找到对应模板的 ID，填入此处
-  return 'rcv57r2mZ3NeH6HlZtvPKi8zRgMWGIy1sUD0tWB03io' // 如 'N_J6F05_bjhqd6zh2h1LHJ9TAv9IpkCiAJEpSw0PrmQ'
+  return "rcv57r2mZ3NeH6HlZtvPKi8zRgMWGIy1sUD0tWB03io"; // 如 'N_J6F05_bjhqd6zh2h1LHJ9TAv9IpkCiAJEpSw0PrmQ'
 }
 
 async function sendSubscribeMessage(event) {
-  try{
-    const db= cloud.database()
-    const msg
-    const msg=await db.collection('idList').where({
-      need:'0'
-    }).get({
-      success:function(res){
-        return res
-      }
-    })
-    const { OPENID } = cloud.getWXContext()
+  try {
+    const db = cloud.database();
+    const msg = await db
+      .collection("idList")
+      .where({
+        need: "0",
+      })
+      .get({
+        success: function (res) {
+          return res;
+        },
+      });
 
-    console.info(msg.data)
-
-    const sendPromises = msg.data.map(async message => {
-      try {
+    msg.data.map(async (message) => {
+      // try {
         // 发送订阅消息
-        await cloud.openapi.subscribeMessage.send({
-          touser: OPENID,
-          page: 'pages/openapi/openapi',
+        const res = await cloud.openapi.subscribeMessage.send({
+          touser: message._openid,
+          page: "pages/openapi/openapi",
           data: {
             thing2: {
-              value: '点击查看详情',
+              value: "点击查看详情",
             },
             thing12: {
-              value: 'test111',
+              value: "test111",
             },
           },
-          template_id:'rcv57r2mZ3NeH6HlZtvPKi8zRgMWGIy1sUD0tWB03io'
+          template_id: "rcv57r2mZ3NeH6HlZtvPKi8zRgMWGIy1sUD0tWB03io",
         });
+        console.info("inin", res);
+
         // 发送成功后将消息的状态改为已发送
         return db
-          .collection('messages')
+          .collection("idList")
           .doc(message._id)
           .update({
             data: {
-              need:'1'
+              need: "1",
+            },
+            success(res) {
+              return res;
             },
           });
-      } catch (e) {
-        return e;
-      }
-    })
-    return sendPromises
-  }catch(e){
-    console.error(e)
+      // } catch (e) {
+      //   return e;
+      // }
+    });
+    // return sendPromises;
+  } catch (e) {
+    console.error(e);
   }
 }
 // sendSubscribeMessage(e) {
