@@ -11,8 +11,8 @@ Page({
   async requestSubscribeMessage() {
     const templateId = [
       "rcv57r2mZ3NeH6HlZtvPKi5-jfsc642tKIJOcQUzTgA",
-      "rcv57r2mZ3NeH6HlZtvPKs86NnxzCxmOX8dOvXS-9Co",
-      "rcv57r2mZ3NeH6HlZtvPKq3cmQf7aVMaGA4h1XxsXBI",
+      "kC6Ow7pgrI95TPJsAh59yrQt5UxogPVs4tatKYuAcbA",
+      "h2pJLutQtzwB74qH5tqhOqZ2xE0H9frJZRLWfPs0EsU",
     ];
     if (!templateId) {
       wx.showModal({
@@ -23,33 +23,24 @@ Page({
     }
     const db = wx.cloud.database();
     if (templateId) {
-      wx.requestSubscribeMessage({
-        tmplIds: [
-         'rcv57r2mZ3NeH6HlZtvPKi5-jfsc642tKIJOcQUzTgA',
-         'kC6Ow7pgrI95TPJsAh59yrQt5UxogPVs4tatKYuAcbA',
-         'h2pJLutQtzwB74qH5tqhOqZ2xE0H9frJZRLWfPs0EsU'
-        ],
+      wx.requestSubscribeMessage({  
+        tmplIds: templateId,
         success: (res) => {
-          if (res[templateId] === "accept") {
-            this.setData({
-              requestSubscribeMessageResult: "成功",
-            });
-            db.collection("idList").add({
-              data: {
-                need: "0",
-              },
-              success(res) {
-                console.info("success:", res);
-              },
-              fail(err) {
-                console.error("error:", err);
-              },
-            });
-          } else {
-            this.setData({
-              requestSubscribeMessageResult: `失败（${res[templateId]}）`,
-            });
+          let toData = {};
+          for (let i = 1; i <= templateId.length; i++) {
+            if (res[templateId[i - 1]] === "accept") {
+              toData["need" + (i * 2 - 1)] = "0";
+            }
           }
+          db.collection("idList1").add({
+            data: toData,
+            success(res) {
+              console.info("success:", res);
+            },
+            fail(err) {
+              console.error("error:", err);
+            },
+          });
         },
         fail: (err) => {
           this.setData({
@@ -61,9 +52,8 @@ Page({
   },
   async requestSubscribeMessage1() {
     const templateId = [
-      "rcv57r2mZ3NeH6HlZtvPKi5-jfsc642tKIJOcQUzTgA",
-      "rcv57r2mZ3NeH6HlZtvPKs86NnxzCxmOX8dOvXS-9Co",
-      "rcv57r2mZ3NeH6HlZtvPKq3cmQf7aVMaGA4h1XxsXBI",
+      "WVe-ZbI39-WLG2w3e-cQsdhlWyuJPouGrhJTZDAtmrc",
+      "WDAd3d2yWD8bi4K0YTjuXtaFEmyzyYSzYOsvVgZLwX4",
     ];
     if (!templateId) {
       wx.showModal({
@@ -75,31 +65,23 @@ Page({
     const db = wx.cloud.database();
     if (templateId) {
       wx.requestSubscribeMessage({
-        tmplIds: [
-         'WVe-ZbI39-WLG2w3e-cQsdhlWyuJPouGrhJTZDAtmrc',
-         'WDAd3d2yWD8bi4K0YTjuXtaFEmyzyYSzYOsvVgZLwX4'
-        ],
+        tmplIds: templateId,
         success: (res) => {
-          if (res[templateId] === "accept") {
-            this.setData({
-              requestSubscribeMessageResult: "成功",
-            });
-            db.collection("idList").add({
-              data: {
-                need: "0",
-              },
-              success(res) {
-                console.info("success:", res);
-              },
-              fail(err) {
-                console.error("error:", err);
-              },
-            });
-          } else {
-            this.setData({
-              requestSubscribeMessageResult: `失败（${res[templateId]}）`,
-            });
+          let toData = {};
+          for (let i = 1; i <= templateId.length; i++) {
+            if (res[templateId[i - 1]] === "accept") {
+              toData["need" + i * 2] = "0";
+            }
           }
+          db.collection("idList1").add({
+            data: toData,
+            success(res) {
+              console.info("success:", res);
+            },
+            fail(err) {
+              console.error("error:", err);
+            },
+          });
         },
         fail: (err) => {
           this.setData({
@@ -111,8 +93,8 @@ Page({
   },
   async requestSubscribeMessage2() {
     const templateId = [
-      'bPBS4BX4GdkUFmfuU_vhbMlTQ8fCeXzIuPTatyl1iMk',
-      'iCPBBBC4o29WwNwWkA4ICAoRv8kyzN59GOcmc2Vn7Oo'
+      "bPBS4BX4GdkUFmfuU_vhbMlTQ8fCeXzIuPTatyl1iMk",
+      "iCPBBBC4o29WwNwWkA4ICAoRv8kyzN59GOcmc2Vn7Oo",
     ];
     if (!templateId) {
       wx.showModal({
@@ -124,31 +106,23 @@ Page({
     const db = wx.cloud.database();
     if (templateId) {
       wx.requestSubscribeMessage({
-        tmplIds: [
-          'bPBS4BX4GdkUFmfuU_vhbMlTQ8fCeXzIuPTatyl1iMk',
-          'iCPBBBC4o29WwNwWkA4ICAoRv8kyzN59GOcmc2Vn7Oo'
-        ],
+        tmplIds: templateId,
         success: (res) => {
-          if (res[templateId] === "accept") {
-            this.setData({
-              requestSubscribeMessageResult: "成功",
-            });
-            db.collection("idList").add({
-              data: {
-                need: "0",
-              },
-              success(res) {
-                console.info("success:", res);
-              },
-              fail(err) {
-                console.error("error:", err);
-              },
-            });
-          } else {
-            this.setData({
-              requestSubscribeMessageResult: `失败（${res[templateId]}）`,
-            });
+          let toData = {};
+          for (let i = 6; i <= templateId.length; i++) {
+            if (res[templateId[i - 6]] === "accept") {
+              toData["need" + i] = "0";
+            }
           }
+          db.collection("idList1").add({
+            data: toData,
+            success(res) {
+              console.info("success:", res);
+            },
+            fail(err) {
+              console.error("error:", err);
+            },
+          });
         },
         fail: (err) => {
           this.setData({

@@ -24,7 +24,7 @@ async function sendSubscribeMessage(event) {
   try {
     const db = cloud.database();
     const msg = await db
-      .collection("idList")
+      .collection("idList1")
       .where({
         need: "0",
       })
@@ -56,7 +56,7 @@ async function sendSubscribeMessage(event) {
       });
 
       // 发送成功后将消息的状态改为已发送
-      db.collection("idList")
+      db.collection("idList1")
         .doc(message._id)
         .update({
           data: {
