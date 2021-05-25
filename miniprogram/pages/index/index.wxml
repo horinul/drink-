@@ -1,9 +1,13 @@
 <!-- index.wxml -->
 <view class="container">
-  <img src="../common/img/bg.png" alt="" class="background" />
-  <view class="title">温馨提示</view>
-  <view class="photo">
-    <img src="" alt="" />
+  <view class="title">
+    <view class="titleFlex">
+      <view class="titleText">温馨提示</view>
+      <image src="{{isMuted?'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%9D%99%E9%9F%B3.png?sign=a860a21da25d48146d22bcbc5c340b35&t=1621948473':'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E8%AF%AD%E9%9F%B3%E4%BF%A1%E6%81%AF_voice-message.png?sign=12b0cb5e6f552a160d9d122492af2ac4&t=1621948459'}}" class="voiceIcon" bind:tap="changeMuted" />
+    </view>
+  </view>
+  <view>
+    <video class="myVideo" src="https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/www.alltoall.net_%E3%80%90%E4%B8%87%E6%81%B6%E4%B9%8B%E6%BA%90%E3%80%91%E8%80%81%E6%9D%BF%E4%B8%8D%E4%BC%9A%E7%96%BC%E4%BD%A0%E7%9A%84%EF%BC%81%E9%A5%AE%E8%8C%B6%E5%85%88%EF%BC%81_O0PfG7qjYZ.mp4?sign=d2b54e43dcc3caa7e68c55a09ff962c2&t=1621949059" binderror="videoErrorCallback" show-center-play-btn='{{false}}' show-play-btn="{{false}}" controls='{{false}}' autoplay="{{true}}" loop="{{true}}" muted="{{isMuted}}"></video>
   </view>
   <view class="article">
     喂！三点钟啦！做乜野啊做！

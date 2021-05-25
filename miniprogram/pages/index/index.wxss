@@ -3,10 +3,19 @@
   text-align: center;
   text-shadow: 2px 2px 2px #f40;
 }
-.photo {
+.titleFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
-  height: 30vh;
-  background-color: darkcyan;
+}
+.voiceIcon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 10rpx;
+}
+.myVideo {
+  width: 100vw;
 }
 .article {
   text-shadow: 2px 2px 2px blue;
@@ -17,7 +26,7 @@
   font-size: 68rpx;
   margin-top: 20rpx;
 }
-.button{
+.button {
   margin-top: 40rpx;
   background-color: cornflowerblue;
   display: inline-block;

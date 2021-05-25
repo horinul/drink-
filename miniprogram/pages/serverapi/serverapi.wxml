@@ -3,6 +3,6 @@
     <view class="list-item" bind:tap="requestSubscribeMessage">一三五喝茶</view>
     <view class="list-item" bind:tap="requestSubscribeMessage1">二四喝水[doge]</view>
     <view class="list-item" bind:tap="requestSubscribeMessage2">周末干饭[doge]</view>
-    <view class="list-item" bind:tap="submitSubscribeMessageForm">test</view>
+    <!-- <view class="list-item" bind:tap="submitSubscribeMessageForm">test</view> -->
   </view>
 </view>
