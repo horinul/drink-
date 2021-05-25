@@ -23,7 +23,7 @@ Page({
     }
     const db = wx.cloud.database();
     if (templateId) {
-      wx.requestSubscribeMessage({  
+      wx.requestSubscribeMessage({
         tmplIds: templateId,
         success: (res) => {
           let toData = {};
@@ -32,7 +32,7 @@ Page({
               toData["need" + (i * 2 - 1)] = "0";
             }
           }
-          db.collection("idList1").add({
+          db.collection("idList2").add({
             data: toData,
             success(res) {
               console.info("success:", res);
@@ -73,7 +73,7 @@ Page({
               toData["need" + i * 2] = "0";
             }
           }
-          db.collection("idList1").add({
+          db.collection("idList2").add({
             data: toData,
             success(res) {
               console.info("success:", res);
@@ -109,12 +109,12 @@ Page({
         tmplIds: templateId,
         success: (res) => {
           let toData = {};
-          for (let i = 6; i <= templateId.length; i++) {
+          for (let i = 6; i <= templateId.length + 6; i++) {
             if (res[templateId[i - 6]] === "accept") {
               toData["need" + i] = "0";
             }
           }
-          db.collection("idList1").add({
+          db.collection("idList2").add({
             data: toData,
             success(res) {
               console.info("success:", res);

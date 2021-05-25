@@ -7,18 +7,6 @@ cloud.init();
 // 云函数入口函数
 exports.main = async (event, context) => {
   return sendSubscribeMessage(event);
-  // console.log(event)
-  // switch (event.action) {
-  //   case 'requestSubscribeMessage': {
-  //     return requestSubscribeMessage(event)
-  //   }
-  //   case 'sendSubscribeMessage': {
-  //     return sendSubscribeMessage(event)
-  //   }
-  //   default: {
-  //     return
-  //   }
-  // }
 };
 
 async function requestSubscribeMessage(event) {
@@ -31,17 +19,24 @@ async function sendSubscribeMessage(event) {
   try {
     const db = cloud.database();
     const msg = await db
-      .collection("idList1")
+      .collection("idList2")
       .where({
-        need: "0",
+        need6: "0",
       })
       .get({
         success: function (res) {
           return res;
         },
       });
-    const nowTime = time.formatTime(new Date());
-    msg.data.map(async (message) => {
+    let tmpArr = [];
+    let filterMsg = [];
+    for (let i = 0; i < msg.data.length; i++) {
+      if (tmpArr.indexOf(msg.data[i]._openid) === -1) {
+        tmpArr.push(msg.data[i]._openid);
+        filterMsg.push(msg.data[i]);
+      }
+    }
+    filterMsg.map(async (message) => {
       // try {
       // 发送订阅消息
       const res = await cloud.openapi.subscribeMessage.send({
@@ -51,8 +46,8 @@ async function sendSubscribeMessage(event) {
           thing1: {
             value: "休息日也要喝茶！多喝热水",
           },
-          thing3:{
-            value:'周六三点🕒'
+          thing3: {
+            value: "周六三点🕒",
           },
           thing12: {
             value: "好好休息",
@@ -60,22 +55,18 @@ async function sendSubscribeMessage(event) {
         },
         template_id: "bPBS4BX4GdkUFmfuU_vhbMlTQ8fCeXzIuPTatyl1iMk",
       });
-      console.info("inin", res);
-
-      // 发送成功后将消息的状态改为已发送
-      db.collection("idList1")
-        .doc(message._id)
+    });
+    msg.data.map(async (msg) => {
+      db.collection("idList2")
+        .doc(msg._id)
         .update({
           data: {
-            need: "1",
+            need6: "1",
           },
           success(res) {
             return res;
           },
         });
-      // } catch (e) {
-      //   return e;
-      // }
     });
     // return sendPromises;
   } catch (e) {

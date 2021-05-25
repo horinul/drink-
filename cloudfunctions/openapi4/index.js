@@ -6,18 +6,6 @@ cloud.init();
 // 云函数入口函数
 exports.main = async (event, context) => {
   return sendSubscribeMessage(event);
-  // console.log(event)
-  // switch (event.action) {
-  //   case 'requestSubscribeMessage': {
-  //     return requestSubscribeMessage(event)
-  //   }
-  //   case 'sendSubscribeMessage': {
-  //     return sendSubscribeMessage(event)
-  //   }
-  //   default: {
-  //     return
-  //   }
-  // }
 };
 
 async function requestSubscribeMessage(event) {
@@ -30,17 +18,25 @@ async function sendSubscribeMessage(event) {
   try {
     const db = cloud.database();
     const msg = await db
-      .collection("idList1")
+      .collection("idList2")
       .where({
-        need: "0",
+        need4: "0",
       })
       .get({
         success: function (res) {
           return res;
         },
       });
+    let tmpArr = [];
+    let filterMsg = [];
+    for (let i = 0; i < msg.data.length; i++) {
+      if (tmpArr.indexOf(msg.data[i]._openid) === -1) {
+        tmpArr.push(msg.data[i]._openid);
+        filterMsg.push(msg.data[i]);
+      }
+    }
     const nowTime = time.formatTime(new Date());
-    msg.data.map(async (message) => {
+    filterMsg.map(async (message) => {
       // try {
       // 发送订阅消息
       const res = await cloud.openapi.subscribeMessage.send({
@@ -50,71 +46,26 @@ async function sendSubscribeMessage(event) {
           thing2: {
             value: "🕒喝茶时间到！",
           },
-          date4:{
-            value:nowTime
-          }
+          date4: {
+            value: nowTime,
+          },
         },
         template_id: "WDAd3d2yWD8bi4K0YTjuXtaFEmyzyYSzYOsvVgZLwX4",
       });
-      console.info("inin", res);
-
-      // 发送成功后将消息的状态改为已发送
-      db.collection("idList1")
-        .doc(message._id)
+    });
+    msg.data.map(async (msg) => {
+      db.collection("idList2")
+        .doc(msg._id)
         .update({
           data: {
-            need: "1",
+            need4: "1",
           },
           success(res) {
             return res;
           },
         });
-      // } catch (e) {
-      //   return e;
-      // }
     });
-    // return sendPromises;
   } catch (e) {
     console.error(e);
   }
 }
-// sendSubscribeMessage(e) {
-//   this.setData({
-//     subscribeMessageResult: "",
-//   });
-
-//   wx.cloud.callFunction({
-//     name: "openapi",
-//     data: {
-//       action: "sendSubscribeMessage",
-//       templateId: this.data.templateId,
-//     },
-//     success: (res) => {
-//       console.warn(
-//         "[云函数] [openapi] subscribeMessage.send 调用成功：",
-//         res
-//       );
-//       wx.showModal({
-//         title: "发送成功",
-//         content: "请返回微信主界面查看",
-//         showCancel: false,
-//       });
-//       wx.showToast({
-//         title: "发送成功，请返回微信主界面查看",
-//       });
-//       this.setData({
-//         subscribeMessageResult: JSON.stringify(res.result),
-//       });
-//     },
-//     fail: (err) => {
-//       wx.showToast({
-//         icon: "none",
-//         title: "调用失败",
-//       });
-//       console.error(
-//         "[云函数] [openapi] subscribeMessage.send 调用失败：",
-//         err
-//       );
-//     },
-//   });
-// },

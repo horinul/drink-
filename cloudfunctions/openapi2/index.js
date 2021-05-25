@@ -7,34 +7,30 @@ cloud.init();
 // 云函数入口函数
 exports.main = async (event, context) => {
   return sendSubscribeMessage(event);
-  // console.log(event)
-  // switch (event.action) {
-  //   case 'requestSubscribeMessage': {
-  //     return requestSubscribeMessage(event)
-  //   }
-  //   case 'sendSubscribeMessage': {
-  //     return sendSubscribeMessage(event)
-  //   }
-  //   default: {
-  //     return
-  //   }
-  // }
 };
 async function sendSubscribeMessage(event) {
   try {
     const db = cloud.database();
     const msg = await db
-      .collection("idList1")
+      .collection("idList2")
       .where({
-        need: "0",
+        need2: "0",
       })
       .get({
         success: function (res) {
           return res;
         },
       });
+    let tmpArr = [];
+    let filterMsg = [];
+    for (let i = 0; i < msg.data.length; i++) {
+      if (tmpArr.indexOf(msg.data[i]._openid) === -1) {
+        tmpArr.push(msg.data[i]._openid);
+        filterMsg.push(msg.data[i]);
+      }
+    }
     const nowTime = time.formatTime(new Date());
-    msg.data.map(async (message) => {
+    filterMsg.map(async (message) => {
       // try {
       // 发送订阅消息
       const res = await cloud.openapi.subscribeMessage.send({
@@ -53,22 +49,18 @@ async function sendSubscribeMessage(event) {
         },
         template_id: "WVe-ZbI39-WLG2w3e-cQsdhlWyuJPouGrhJTZDAtmrc",
       });
-      console.info("inin", res);
-
-      // 发送成功后将消息的状态改为已发送
-      db.collection("idList1")
-        .doc(message._id)
+    });
+    msg.data.map(async (msg) => {
+      db.collection("idList2")
+        .doc(msg._id)
         .update({
           data: {
-            need: "1",
+            need2: "1",
           },
           success(res) {
             return res;
           },
         });
-      // } catch (e) {
-      //   return e;
-      // }
     });
     // return sendPromises;
   } catch (e) {
