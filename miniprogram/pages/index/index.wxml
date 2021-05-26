@@ -14,7 +14,7 @@
     <view class="largeTitle">饮茶先啊</view>
   </view>
   <navigator url="/pages/drinkDetail/index" hover-class="none">
-    <view class="button">点击饮茶🫖</view>
+    <view class="button">点击饮茶🥤</view>
   </navigator>
   <navigator url="../serverapi/serverapi" open-type="navigate" class="uploader-text">
     <view class="button">提醒饮茶🍵</view>
