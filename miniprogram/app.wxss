@@ -3,5 +3,5 @@ Page {
   height: 100vh;
   color: #fff;
   background-size: 100% 100%;
-  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/bg1.png?sign=42a7de9d3f663ac5426febf596661d75&t=1621604634);
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/bg.jpg?sign=50354782dacaa908b429fe0958ff0c81&t=1622101325);
 }
