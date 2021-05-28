@@ -1,6 +1,6 @@
 // 云函数入口文件
 const cloud = require("wx-server-sdk");
-const time = require("../openapi/time");
+const time = require("./time");
 
 cloud.init();
 
