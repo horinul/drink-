@@ -1,12 +1,28 @@
+Page {
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-size: 100% 100%;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%A5%AE%E8%8C%B6%E8%8F%9C%E5%8D%95-bg.jpg?sign=bb51c3212c30bd8e8c211b0e902ee45b&t=1622278560);
+}
 .com {
   width: 100vw;
   height: 100vh;
 }
 .title {
-  font-size: 56rpx;
-  text-shadow: 2px 2px 2px darkgreen;
-  text-align: center;
+  width: 40vw;
+  height: 60rpx;
   margin-top: 30rpx;
+  background-size: 100% 100%;
+  margin-left: 10vw;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E5%81%9A%E5%B7%A5%E8%BE%9B%E8%8B%A6%E5%95%A6~.png?sign=6afac4c7bff86d6388f49831664f3db6&t=1622278674);
+}
+.subTitle {
+  margin-left: 50%;
+  width: 40vw;
+  height: 80rpx;
+  background-size: 100% 100%;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%A5%AE%E6%9D%AF%E8%8C%B6%E5%90%A7%EF%BC%81.png?sign=2894f89eb5a9156519dfadc60174d0ec&t=1622278835);
 }
 .teaList {
   width: 100vw;
@@ -30,13 +46,13 @@
   display: inline-block;
   border-radius: 10rpx;
 }
-.text{
+.text {
   line-height: 120rpx;
   margin-left: 10rpx;
 }
 .kon {
   background-size: 100% 100%;
   width: 100vw;
-  height: 700rpx;
-  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/kon.png?sign=f5cd30e43a9b299a44952c36eb5d67ba&t=1621604766);
+  height: 400rpx;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/table.png?sign=281e96df85da5b9babff3e2968bc296e&t=1622278499);
 }

@@ -5,11 +5,18 @@
 }
 .titleFlex {
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 100vw;
+  height: 180rpx;
+  margin-bottom: 20rpx;
+}
+.titleText {
+  width: 500rpx;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E4%B8%89%E7%82%B9%E9%A5%AE%E8%8C%B6.png?sign=553bfb212fef2204fd9edeaff9a80d39&t=1622277827);
+  background-size: 100% 100%;
 }
 .voiceIcon {
+  margin-top: 100rpx;
   width: 60rpx;
   height: 60rpx;
   margin-left: 10rpx;
@@ -28,11 +35,33 @@
 }
 .button {
   margin-top: 40rpx;
-  background-color: cornflowerblue;
-  display: inline-block;
+  /* background-color: cornflowerblue; */
   margin-left: 50%;
   transform: translateX(-50%);
   padding: 20rpx 80rpx;
   border: 1px solid #fff;
-  border-radius: 5rpx;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button1{
+  background-color: #418970;
+}
+.button2{
+  background-color: #AD8D65;
+}
+.icon1 {
+  margin-left: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E8%8C%B6%E6%9D%AF.png?sign=72c90c225e2af6c129629bad81c25384&t=1622277380);
+  background-size: 100% 100%;
+}
+.icon2 {
+  margin-left: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E6%8F%90%E9%86%92.png?sign=8a0e7d6e8a9ff633b5ae7c7620da3e93&t=1622277733);
+  background-size: 100% 100%;
 }

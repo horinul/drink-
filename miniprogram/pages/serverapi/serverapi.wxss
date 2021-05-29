@@ -1,7 +1,13 @@
 /* miniprogram/pages/openapi/openapi.wxss */
 
 @import "../../style/guide.wxss";
-
+Page {
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-size: 100% 100%;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE-bg.jpg?sign=28710b532085d0a91b2d750f25c692fe&t=1622279055);
+}
 .black {
   color: black;
 }

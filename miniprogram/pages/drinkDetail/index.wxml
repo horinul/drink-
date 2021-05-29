@@ -1,5 +1,6 @@
 <view class="com">
-    <view class="title">做工辛苦啦！饮杯茶吧！</view>
+    <view class="title"></view>
+    <view class="subTitle"></view>
     <view class="teaList">
         <view class="teaItem" wx:for="{{tesList}}" wx:for-item="item" bind:tap="toOther" data-url="{{item.appid}}">
             <image class="img"  src="{{item.imgUrl}}" alt=""/>
