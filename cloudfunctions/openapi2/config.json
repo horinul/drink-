@@ -16,7 +16,7 @@
     {
       "name":"timer",
       "type":"timer",
-      "config":"0 0 3 * * TUE *"
+      "config":"0 0 15 * * TUE *"
     }
   ]
 }

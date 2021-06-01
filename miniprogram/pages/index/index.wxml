@@ -19,7 +19,7 @@
       <view class="icon1"></view>
     </view>
   </navigator>
-  <navigator url="../serverapi/serverapi" open-type="navigate" class="uploader-text">
+  <navigator url="../serverapi/serverapi" open-type="navigate" class="uploader-text" hover-class="none">
     <view class="button button2">
       提醒饮茶
       <view class="icon2"></view>

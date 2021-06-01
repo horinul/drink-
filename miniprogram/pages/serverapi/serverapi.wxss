@@ -1,13 +1,38 @@
 /* miniprogram/pages/openapi/openapi.wxss */
 
-@import "../../style/guide.wxss";
+/* @import "../../style/guide.wxss"; */
 Page {
   width: 100vw;
   height: 100vh;
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
+  font-size: 50rpx;
+  font-weight: 800;
+  background: none;
+}
+.bac{
+  width: 100vw;
+  height: 1400rpx;
+  position: absolute;
+  z-index: -1;
   background-size: 100% 100%;
   background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE-bg.jpg?sign=28710b532085d0a91b2d750f25c692fe&t=1622279055);
 }
-.black {
-  color: black;
+.title{
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E5%9B%BE%E5%B1%82%205.png?sign=2aa0f19ff0d4effa85fccdba39100578&t=1622515689);
+  background-size: 100% 100%;
+  width: 80vw;
+  height: 180rpx;
+  margin-left: 10vw;
+}
+.list-item{
+  text-align: center;
+  margin-top: 20rpx;
+}
+.setBtn{
+  color: #fff;
+  font-size: 40rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  background-color: green;
 }

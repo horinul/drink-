@@ -1,8 +1,19 @@
 <view class="container">
+  <view class="bac"></view>
+  <view class="title"></view>
   <view class="list">
-    <view class="list-item" bind:tap="requestSubscribeMessage">一三五喝茶</view>
-    <view class="list-item" bind:tap="requestSubscribeMessage1">二四喝水[doge]</view>
-    <view class="list-item" bind:tap="requestSubscribeMessage2">周末干饭[doge]</view>
+    <view class="list-item">
+      一三五带薪喝茶
+      <span class="setBtn" bind:tap="requestSubscribeMessage">设置</span>
+    </view>
+    <view class="list-item">
+      二四摸鱼饮茶
+      <span class="setBtn" bind:tap="requestSubscribeMessage1">设置</span>
+    </view>
+    <view class="list-item">
+      周末饮个靓靓的杯
+      <span class="setBtn" bind:tap="requestSubscribeMessage2">设置</span>
+    </view>
     <!-- <view class="list-item" bind:tap="submitSubscribeMessageForm">test</view> -->
   </view>
 </view>
