@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -20,6 +21,18 @@
         {
           "name": "pages/serverapi/serverapi",
           "pathName": "pages/serverapi/serverapi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/drinkDetail/index",
+          "pathName": "pages/drinkDetail/index",
           "query": "",
           "scene": null
         }

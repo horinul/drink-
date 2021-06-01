@@ -12,7 +12,7 @@ async function sendSubscribeMessage(event) {
   try {
     const db = cloud.database();
     const msg = await db
-      .collection("idList2")
+      .collection("idList3")
       .where({
         need2: "0",
       })
@@ -51,7 +51,7 @@ async function sendSubscribeMessage(event) {
       });
     });
     msg.data.map(async (msg) => {
-      db.collection("idList2")
+      db.collection("idList3")
         .doc(msg._id)
         .update({
           data: {

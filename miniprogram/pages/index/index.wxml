@@ -3,7 +3,7 @@
   <view class="title">
     <view class="titleFlex">
       <view class="titleText"></view>
-      <image src="{{isMuted?'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%9D%99%E9%9F%B3.png?sign=a860a21da25d48146d22bcbc5c340b35&t=1621948473':'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E8%AF%AD%E9%9F%B3%E4%BF%A1%E6%81%AF_voice-message.png?sign=12b0cb5e6f552a160d9d122492af2ac4&t=1621948459'}}" class="voiceIcon" bind:tap="changeMuted" />
+      <image src="{{isMuted?'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%9D%99%E9%9F%B3_volume-mute%20(1).png?sign=664c800a46fb039ff66ddd7f42987f2a&t=1622551190':'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E5%A3%B0%E9%9F%B3-%E5%A4%A7_volume-notice.png?sign=c2fb5614a205f12b62657a2abe2feed6&t=1622551247'}}" class="voiceIcon" bind:tap="changeMuted" />
     </view>
   </view>
   <view>

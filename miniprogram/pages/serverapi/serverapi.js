@@ -32,7 +32,7 @@ Page({
               toData["need" + (i * 2 - 1)] = "0";
             }
           }
-          db.collection("idList2").add({
+          db.collection("idList3").add({
             data: toData,
             success(res) {
               console.info("success:", res);
@@ -73,7 +73,7 @@ Page({
               toData["need" + i * 2] = "0";
             }
           }
-          db.collection("idList2").add({
+          db.collection("idList3").add({
             data: toData,
             success(res) {
               console.info("success:", res);
@@ -114,7 +114,7 @@ Page({
               toData["need" + i] = "0";
             }
           }
-          db.collection("idList2").add({
+          db.collection("idList3").add({
             data: toData,
             success(res) {
               console.info("success:", res);
