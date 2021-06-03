@@ -35,7 +35,7 @@ async function sendSubscribeMessage(event) {
       // 发送订阅消息
       const res = await cloud.openapi.subscribeMessage.send({
         touser: message._openid,
-        page: "pages/openapi/openapi",
+        page: "pages/serverapi/serverapi",
         data: {
           thing3: {
             value: "珍惜今天的喝茶时光[doge]",

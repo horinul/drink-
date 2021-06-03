@@ -37,7 +37,7 @@ async function sendSubscribeMessage(event) {
       // 发送订阅消息
       const res = await cloud.openapi.subscribeMessage.send({
         touser: message._openid,
-        page: "pages/openapi/openapi",
+        page: "pages/serverapi/serverapi",
         data: {
           thing2: {
             value: "上班第一天！喝茶啦～",
@@ -68,43 +68,3 @@ async function sendSubscribeMessage(event) {
     console.error(e);
   }
 }
-// sendSubscribeMessage(e) {
-//   this.setData({
-//     subscribeMessageResult: "",
-//   });
-
-//   wx.cloud.callFunction({
-//     name: "openapi",
-//     data: {
-//       action: "sendSubscribeMessage",
-//       templateId: this.data.templateId,
-//     },
-//     success: (res) => {
-//       console.warn(
-//         "[云函数] [openapi] subscribeMessage.send 调用成功：",
-//         res
-//       );
-//       wx.showModal({
-//         title: "发送成功",
-//         content: "请返回微信主界面查看",
-//         showCancel: false,
-//       });
-//       wx.showToast({
-//         title: "发送成功，请返回微信主界面查看",
-//       });
-//       this.setData({
-//         subscribeMessageResult: JSON.stringify(res.result),
-//       });
-//     },
-//     fail: (err) => {
-//       wx.showToast({
-//         icon: "none",
-//         title: "调用失败",
-//       });
-//       console.error(
-//         "[云函数] [openapi] subscribeMessage.send 调用失败：",
-//         err
-//       );
-//     },
-//   });
-// },
