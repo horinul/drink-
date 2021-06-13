@@ -1,0 +1,94 @@
+Page {
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-size: 100% 100%;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%A5%AE%E8%8C%B6%E8%8F%9C%E5%8D%95-bg.jpg?sign=bb51c3212c30bd8e8c211b0e902ee45b&t=1622278560);
+}
+.rankingCom {
+  width: 100vw;
+  height: 100vh;
+}
+.title{
+  width: 60vw;
+  height: 120rpx;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%A5%AE%E8%8C%B6%E6%8E%92%E8%A1%8C.png?sign=b1d4598c38347ca59e8fe59ca29a3308&t=1623559072);
+  background-size: 100% 100%;
+  margin-left: 20vw;
+  margin-top: 40rpx;
+}
+.totalRank{
+    color: #000;
+    text-align: center;
+    font-size: 30rpx;
+    margin-top: 20rpx;
+}
+.authorBtn{
+    background-color: #fff;
+    color: darkcyan;
+    width: 30vw;
+    margin-left: 35vw;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 10rpx;
+}
+.loadingText{
+    text-align: center;
+    width: 100vw;
+    margin-top: 20rpx;
+}
+.rankDetail{
+    width: 90vw;
+    margin-left: 5vw;
+    background-color: #fff;
+    border-radius: 10rpx;
+    padding: 20rpx 0;
+    margin-bottom: 40rpx;
+    margin-top: 30rpx;
+}
+.detailItem{
+    display: flex;
+    padding: 10rpx 20rpx;
+    align-items: center;
+}
+.userImgCom{
+    flex: 1;
+    width: 60rpx;
+    height: 60rpx;
+}
+.userImg{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+.username{
+    color: gray;
+    font-size: 42rpx;
+    flex: 3;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.reward{
+    flex: 4;
+    color: #f40;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    font-size: 32rpx;
+}
+.rankSpe{
+    width: 90rpx;
+    height: 40rpx;
+    flex: 2;
+}
+.rankImg{
+    width: 30rpx;
+    height: 40rpx;
+    flex: 2;
+}
+.rankTen{
+    width: 50rpx;
+    height: 40rpx;
+    flex: 2;
+}

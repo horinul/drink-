@@ -1,0 +1,23 @@
+<view class="rankingCom">
+    <view class="title"></view>
+    <view class="totalRank">
+        <view wx:if="{{hasAuthor&&!isLoading}}">您的当前排名：{{userRank}}</view>
+        <view wx:if="{{!hasAuthor&&!isLoading}}" class="authorBtn" bind:tap="getAuthor">
+            点击获取排名
+        </view>
+    </view>
+    <view wx:if="{{isLoading}}" class="loadingText">正在加载中...</view>
+    <view wx:if="{{!isLoading&&allRankList.length!==0}}" class="rankDetail">
+        <view class="detailItem" wx:for="{{rankList}}" wx:for-item="item" wx:for-index="index">
+            <view class="userImgCom">
+                <image class="userImg" src="{{item.avatarUrl}}" />
+            </view>
+            <view class="username">{{item.username}}</view>
+            <view class="reward">{{index===0?'赠送奶茶一杯！':''}}</view>
+            <view class="rankNum">
+                <image class="{{index<3?'rankSpe':'rankImg'}} {{index===9?'rankTen':''}}" src="{{imgUrl[index]}}" />
+            </view>
+        </view>
+    </view>
+    <view class="loadingText" wx:if="{{!isLoading&&allRankList.length===0}}">暂无数据</view>
+</view>

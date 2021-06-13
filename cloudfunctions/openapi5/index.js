@@ -57,6 +57,7 @@ async function sendSubscribeMessage(event) {
         template_id: "h2pJLutQtzwB74qH5tqhOqZ2xE0H9frJZRLWfPs0EsU",
       });
     });
+    const _ = db.command;
     msg.data.map(async (msg) => {
       db.collection("idList3")
         .doc(msg._id)
@@ -68,48 +69,20 @@ async function sendSubscribeMessage(event) {
             return res;
           },
         });
+      db.collection("rank")
+        .where({
+          _openid: msg._openid,
+        })
+        .update({
+          data: {
+            rankNum: _.inc(1),
+          },
+          success(res) {
+            return res;
+          },
+        });
     });
   } catch (e) {
     console.error(e);
   }
 }
-// sendSubscribeMessage(e) {
-//   this.setData({
-//     subscribeMessageResult: "",
-//   });
-
-//   wx.cloud.callFunction({
-//     name: "openapi",
-//     data: {
-//       action: "sendSubscribeMessage",
-//       templateId: this.data.templateId,
-//     },
-//     success: (res) => {
-//       console.warn(
-//         "[云函数] [openapi] subscribeMessage.send 调用成功：",
-//         res
-//       );
-//       wx.showModal({
-//         title: "发送成功",
-//         content: "请返回微信主界面查看",
-//         showCancel: false,
-//       });
-//       wx.showToast({
-//         title: "发送成功，请返回微信主界面查看",
-//       });
-//       this.setData({
-//         subscribeMessageResult: JSON.stringify(res.result),
-//       });
-//     },
-//     fail: (err) => {
-//       wx.showToast({
-//         icon: "none",
-//         title: "调用失败",
-//       });
-//       console.error(
-//         "[云函数] [openapi] subscribeMessage.send 调用失败：",
-//         err
-//       );
-//     },
-//   });
-// },

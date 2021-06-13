@@ -35,6 +35,12 @@
           "pathName": "pages/drinkDetail/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/ranking/index",
+          "pathName": "pages/ranking/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

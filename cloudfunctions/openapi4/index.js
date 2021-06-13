@@ -54,12 +54,25 @@ async function sendSubscribeMessage(event) {
         template_id: "WDAd3d2yWD8bi4K0YTjuXtaFEmyzyYSzYOsvVgZLwX4",
       });
     });
+    const _ = db.command;
     msg.data.map(async (msg) => {
       db.collection("idList3")
         .doc(msg._id)
         .update({
           data: {
             need4: "1",
+          },
+          success(res) {
+            return res;
+          },
+        });
+      db.collection("rank")
+        .where({
+          _openid: msg._openid,
+        })
+        .update({
+          data: {
+            rankNum: _.inc(1),
           },
           success(res) {
             return res;
