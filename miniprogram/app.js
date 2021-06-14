@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      console.error("请使用 2.2.3 或以上的基础库以使用云能力");
     } else {
       wx.cloud.init({
         // env:'cloud1-5gde52mzca59cee4',
@@ -12,12 +12,12 @@ App({
         //   如不填则使用默认环境（第一个创建的环境）
         // env: 'my-env-id',
         traceUser: true,
-      })  
-      wx.cloud.callFunction({
-        name:'openapi'
-      })  
+      });
+      // wx.cloud.callFunction({
+      //   name:'openapi'
+      // })
     }
 
-    this.globalData = {}
-  }
-})
+    this.globalData = {};
+  },
+});

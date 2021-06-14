@@ -27,7 +27,11 @@ Page({
         tmplIds: templateId,
         success: (res) => {
           let toData = {};
-          if (res[templateId[0]] === "accept") {
+          if (
+            res[templateId[0]] === "accept" ||
+            res[templateId[1]] === "accept" ||
+            res[templateId[2]] === "accept"
+          ) {
             for (let i = 1; i <= templateId.length; i++) {
               if (res[templateId[i - 1]] === "accept") {
                 toData["need" + (i * 2 - 1)] = "0";
@@ -84,7 +88,10 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: templateId,
         success: (res) => {
-          if (res[templateId[1]] === "accept") {
+          if (
+            res[templateId[0]] === "accept" ||
+            res[templateId[1]] === "accept"
+          ) {
             let toData = {};
             for (let i = 1; i <= templateId.length; i++) {
               if (res[templateId[i - 1]] === "accept") {
@@ -143,7 +150,10 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: templateId,
         success: (res) => {
-          if (res[templateId[2]] === "accept") {
+          if (
+            res[templateId[0]] === "accept" ||
+            res[templateId[1]] === "accept"
+          ) {
             let toData = {};
             for (let i = 6; i <= templateId.length + 6; i++) {
               if (res[templateId[i - 6]] === "accept") {
