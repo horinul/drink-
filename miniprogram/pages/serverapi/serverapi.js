@@ -35,10 +35,25 @@ Page({
           db.collection("idList3").add({
             data: toData,
             success(res) {
-              console.info("success:", res);
+              wx.showToast({
+                title: "设置成功！", // 提示的内容
+                icon: "success", // 图标，默认success
+                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000, // 提示的延迟时间，默认1500
+                mask: false, // 是否显示透明蒙层，防止触摸穿透
+                success: function () {},
+              });
             },
             fail(err) {
               console.error("error:", err);
+              wx.showToast({
+                title: "设置失败！请和up主联系", // 提示的内容
+                icon: "error", // 图标，默认success
+                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000, // 提示的延迟时间，默认1500
+                mask: false, // 是否显示透明蒙层，防止触摸穿透
+                success: function () {},
+              });
             },
           });
         },
@@ -77,9 +92,25 @@ Page({
             data: toData,
             success(res) {
               console.info("success:", res);
+              wx.showToast({
+                title: "设置成功！", // 提示的内容
+                icon: "success", // 图标，默认success
+                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000, // 提示的延迟时间，默认1500
+                mask: false, // 是否显示透明蒙层，防止触摸穿透
+                success: function () {},
+              });
             },
             fail(err) {
               console.error("error:", err);
+              wx.showToast({
+                title: "设置失败！请和up主联系", // 提示的内容
+                icon: "error", // 图标，默认success
+                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000, // 提示的延迟时间，默认1500
+                mask: false, // 是否显示透明蒙层，防止触摸穿透
+                success: function () {},
+              });
             },
           });
         },
@@ -118,9 +149,25 @@ Page({
             data: toData,
             success(res) {
               console.info("success:", res);
+              wx.showToast({
+                title: "设置成功！", // 提示的内容
+                icon: "success", // 图标，默认success
+                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000, // 提示的延迟时间，默认1500
+                mask: false, // 是否显示透明蒙层，防止触摸穿透
+                success: function () {},
+              });
             },
             fail(err) {
               console.error("error:", err);
+              wx.showToast({
+                title: "设置失败！请和up主联系", // 提示的内容
+                icon: "error", // 图标，默认success
+                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000, // 提示的延迟时间，默认1500
+                mask: false, // 是否显示透明蒙层，防止触摸穿透
+                success: function () {},
+              });
             },
           });
         },
@@ -132,88 +179,88 @@ Page({
       });
     }
   },
-  sendSubscribeMessage(e) {
-    this.setData({
-      subscribeMessageResult: "",
-    });
+  // sendSubscribeMessage(e) {
+  //   this.setData({
+  //     subscribeMessageResult: "",
+  //   });
 
-    wx.cloud.callFunction({
-      name: "openapi",
-      data: {
-        action: "sendSubscribeMessage",
-        templateId: this.data.templateId,
-      },
-      success: (res) => {
-        console.warn(
-          "[云函数] [openapi] subscribeMessage.send 调用成功：",
-          res
-        );
-        wx.showModal({
-          title: "发送成功",
-          content: "请返回微信主界面查看",
-          showCancel: false,
-        });
-        // wx.showToast({
-        //   title: "发送成功，请返回微信主界面查看",
-        // });
-        this.setData({
-          subscribeMessageResult: JSON.stringify(res.result),
-        });
-      },
-      fail: (err) => {
-        wx.showToast({
-          icon: "none",
-          title: "调用失败",
-        });
-        console.error(
-          "[云函数] [openapi] subscribeMessage.send 调用失败：",
-          err
-        );
-      },
-    });
-  },
+  //   wx.cloud.callFunction({
+  //     name: "openapi",
+  //     data: {
+  //       action: "sendSubscribeMessage",
+  //       templateId: this.data.templateId,
+  //     },
+  //     success: (res) => {
+  //       console.warn(
+  //         "[云函数] [openapi] subscribeMessage.send 调用成功：",
+  //         res
+  //       );
+  //       wx.showModal({
+  //         title: "发送成功",
+  //         content: "请返回微信主界面查看",
+  //         showCancel: false,
+  //       });
+  //       // wx.showToast({
+  //       //   title: "发送成功，请返回微信主界面查看",
+  //       // });
+  //       this.setData({
+  //         subscribeMessageResult: JSON.stringify(res.result),
+  //       });
+  //     },
+  //     fail: (err) => {
+  //       wx.showToast({
+  //         icon: "none",
+  //         title: "调用失败",
+  //       });
+  //       console.error(
+  //         "[云函数] [openapi] subscribeMessage.send 调用失败：",
+  //         err
+  //       );
+  //     },
+  //   });
+  // },
 
-  submitSubscribeMessageForm(e) {
-    this.setData({
-      subscribeMessageResult: "",
-    });
+  // submitSubscribeMessageForm(e) {
+  //   this.setData({
+  //     subscribeMessageResult: "",
+  //   });
 
-    wx.cloud.callFunction({
-      name: "openapi",
-      config: { env: "cloud1-5gde52mzca59cee4" },
-      data: {
-        action: "sendSubscribeMessage",
-        formId: e.detail.formId,
-      },
-      success: (res) => {
-        console.warn(
-          "[云函数] [openapi] subscribeMessage.send 调用成功：",
-          res
-        );
-        wx.showModal({
-          title: "发送成功",
-          content: "请返回微信主界面查看",
-          showCancel: false,
-        });
-        wx.showToast({
-          title: "发送成功，请返回微信主界面查看",
-        });
-        this.setData({
-          templateMessageResult: JSON.stringify(res.result),
-        });
-      },
-      fail: (err) => {
-        wx.showToast({
-          icon: "none",
-          title: "调用失败",
-        });
-        console.error(
-          "[云函数] [openapi] templateMessage.send 调用失败：",
-          err
-        );
-      },
-    });
-  },
+  //   wx.cloud.callFunction({
+  //     name: "openapi",
+  //     config: { env: "cloud1-5gde52mzca59cee4" },
+  //     data: {
+  //       action: "sendSubscribeMessage",
+  //       formId: e.detail.formId,
+  //     },
+  //     success: (res) => {
+  //       console.warn(
+  //         "[云函数] [openapi] subscribeMessage.send 调用成功：",
+  //         res
+  //       );
+  //       wx.showModal({
+  //         title: "发送成功",
+  //         content: "请返回微信主界面查看",
+  //         showCancel: false,
+  //       });
+  //       wx.showToast({
+  //         title: "发送成功，请返回微信主界面查看",
+  //       });
+  //       this.setData({
+  //         templateMessageResult: JSON.stringify(res.result),
+  //       });
+  //     },
+  //     fail: (err) => {
+  //       wx.showToast({
+  //         icon: "none",
+  //         title: "调用失败",
+  //       });
+  //       console.error(
+  //         "[云函数] [openapi] templateMessage.send 调用失败：",
+  //         err
+  //       );
+  //     },
+  //   });
+  // },
 
   clearWXACodeCache() {
     wx.removeStorageSync("wxacodeCloudID");

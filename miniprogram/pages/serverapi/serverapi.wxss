@@ -12,7 +12,7 @@ Page {
 }
 .bac{
   width: 100vw;
-  height: 1400rpx;
+  height: 1500rpx;
   position: absolute;
   z-index: -1;
   background-size: 100% 100%;

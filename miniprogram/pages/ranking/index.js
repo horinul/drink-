@@ -43,7 +43,7 @@ Page({
     const db = wx.cloud.database();
     const that = this;
     db.collection("rank")
-      .orderBy("rankNum", "asc")
+      .orderBy("rankNum", "desc")
       .get({
         success(res) {
           that.setData({
@@ -52,14 +52,10 @@ Page({
           that.setData({
             rankList: that.data.allRankList.slice(0, 10),
           });
+          console.info(that.data.allRankList);
           if (that.data.allRankList.length !== 0) {
             console.info(that.data.allRankList);
             for (let i = 0; i < that.data.allRankList.length; i++) {
-              console.info(
-                that.data.allRankList[i]._openid,
-                "111",
-                that.data.openid
-              );
               if (that.data.allRankList[i]._openid === that.data.openid) {
                 that.setData({
                   userRank: i + 1,
