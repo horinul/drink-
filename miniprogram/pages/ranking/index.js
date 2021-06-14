@@ -52,9 +52,7 @@ Page({
           that.setData({
             rankList: that.data.allRankList.slice(0, 10),
           });
-          console.info(that.data.allRankList);
           if (that.data.allRankList.length !== 0) {
-            console.info(that.data.allRankList);
             for (let i = 0; i < that.data.allRankList.length; i++) {
               if (that.data.allRankList[i]._openid === that.data.openid) {
                 that.setData({
@@ -90,7 +88,6 @@ Page({
             },
           });
         if (!that.data.isHasInDB) {
-          console.info(wx.getStorageSync("username"));
           db.collection("rank").add({
             data: {
               username: wx.getStorageSync("username"),
