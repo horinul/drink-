@@ -27,35 +27,37 @@ Page({
         tmplIds: templateId,
         success: (res) => {
           let toData = {};
-          for (let i = 1; i <= templateId.length; i++) {
-            if (res[templateId[i - 1]] === "accept") {
-              toData["need" + (i * 2 - 1)] = "0";
+          if (res[templateId[0]] === "accept") {
+            for (let i = 1; i <= templateId.length; i++) {
+              if (res[templateId[i - 1]] === "accept") {
+                toData["need" + (i * 2 - 1)] = "0";
+              }
             }
+            db.collection("idList3").add({
+              data: toData,
+              success(res) {
+                wx.showToast({
+                  title: "设置成功！", // 提示的内容
+                  icon: "success", // 图标，默认success
+                  image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                  duration: 2000, // 提示的延迟时间，默认1500
+                  mask: false, // 是否显示透明蒙层，防止触摸穿透
+                  success: function () {},
+                });
+              },
+              fail(err) {
+                console.error("error:", err);
+                wx.showToast({
+                  title: "设置失败！请和up主联系", // 提示的内容
+                  icon: "error", // 图标，默认success
+                  image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                  duration: 2000, // 提示的延迟时间，默认1500
+                  mask: false, // 是否显示透明蒙层，防止触摸穿透
+                  success: function () {},
+                });
+              },
+            });
           }
-          db.collection("idList3").add({
-            data: toData,
-            success(res) {
-              wx.showToast({
-                title: "设置成功！", // 提示的内容
-                icon: "success", // 图标，默认success
-                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
-                duration: 2000, // 提示的延迟时间，默认1500
-                mask: false, // 是否显示透明蒙层，防止触摸穿透
-                success: function () {},
-              });
-            },
-            fail(err) {
-              console.error("error:", err);
-              wx.showToast({
-                title: "设置失败！请和up主联系", // 提示的内容
-                icon: "error", // 图标，默认success
-                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
-                duration: 2000, // 提示的延迟时间，默认1500
-                mask: false, // 是否显示透明蒙层，防止触摸穿透
-                success: function () {},
-              });
-            },
-          });
         },
         fail: (err) => {
           this.setData({
@@ -82,37 +84,39 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: templateId,
         success: (res) => {
-          let toData = {};
-          for (let i = 1; i <= templateId.length; i++) {
-            if (res[templateId[i - 1]] === "accept") {
-              toData["need" + i * 2] = "0";
+          if (res[templateId[1]] === "accept") {
+            let toData = {};
+            for (let i = 1; i <= templateId.length; i++) {
+              if (res[templateId[i - 1]] === "accept") {
+                toData["need" + i * 2] = "0";
+              }
             }
+            db.collection("idList3").add({
+              data: toData,
+              success(res) {
+                console.info("success:", res);
+                wx.showToast({
+                  title: "设置成功！", // 提示的内容
+                  icon: "success", // 图标，默认success
+                  image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                  duration: 2000, // 提示的延迟时间，默认1500
+                  mask: false, // 是否显示透明蒙层，防止触摸穿透
+                  success: function () {},
+                });
+              },
+              fail(err) {
+                console.error("error:", err);
+                wx.showToast({
+                  title: "设置失败！请和up主联系", // 提示的内容
+                  icon: "error", // 图标，默认success
+                  image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                  duration: 2000, // 提示的延迟时间，默认1500
+                  mask: false, // 是否显示透明蒙层，防止触摸穿透
+                  success: function () {},
+                });
+              },
+            });
           }
-          db.collection("idList3").add({
-            data: toData,
-            success(res) {
-              console.info("success:", res);
-              wx.showToast({
-                title: "设置成功！", // 提示的内容
-                icon: "success", // 图标，默认success
-                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
-                duration: 2000, // 提示的延迟时间，默认1500
-                mask: false, // 是否显示透明蒙层，防止触摸穿透
-                success: function () {},
-              });
-            },
-            fail(err) {
-              console.error("error:", err);
-              wx.showToast({
-                title: "设置失败！请和up主联系", // 提示的内容
-                icon: "error", // 图标，默认success
-                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
-                duration: 2000, // 提示的延迟时间，默认1500
-                mask: false, // 是否显示透明蒙层，防止触摸穿透
-                success: function () {},
-              });
-            },
-          });
         },
         fail: (err) => {
           this.setData({
@@ -139,37 +143,39 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: templateId,
         success: (res) => {
-          let toData = {};
-          for (let i = 6; i <= templateId.length + 6; i++) {
-            if (res[templateId[i - 6]] === "accept") {
-              toData["need" + i] = "0";
+          if (res[templateId[2]] === "accept") {
+            let toData = {};
+            for (let i = 6; i <= templateId.length + 6; i++) {
+              if (res[templateId[i - 6]] === "accept") {
+                toData["need" + i] = "0";
+              }
             }
+            db.collection("idList3").add({
+              data: toData,
+              success(res) {
+                console.info("success:", res);
+                wx.showToast({
+                  title: "设置成功！", // 提示的内容
+                  icon: "success", // 图标，默认success
+                  image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                  duration: 2000, // 提示的延迟时间，默认1500
+                  mask: false, // 是否显示透明蒙层，防止触摸穿透
+                  success: function () {},
+                });
+              },
+              fail(err) {
+                console.error("error:", err);
+                wx.showToast({
+                  title: "设置失败！请和up主联系", // 提示的内容
+                  icon: "error", // 图标，默认success
+                  image: "", // 自定义图标的本地路径，image 的优先级高于 icon
+                  duration: 2000, // 提示的延迟时间，默认1500
+                  mask: false, // 是否显示透明蒙层，防止触摸穿透
+                  success: function () {},
+                });
+              },
+            });
           }
-          db.collection("idList3").add({
-            data: toData,
-            success(res) {
-              console.info("success:", res);
-              wx.showToast({
-                title: "设置成功！", // 提示的内容
-                icon: "success", // 图标，默认success
-                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
-                duration: 2000, // 提示的延迟时间，默认1500
-                mask: false, // 是否显示透明蒙层，防止触摸穿透
-                success: function () {},
-              });
-            },
-            fail(err) {
-              console.error("error:", err);
-              wx.showToast({
-                title: "设置失败！请和up主联系", // 提示的内容
-                icon: "error", // 图标，默认success
-                image: "", // 自定义图标的本地路径，image 的优先级高于 icon
-                duration: 2000, // 提示的延迟时间，默认1500
-                mask: false, // 是否显示透明蒙层，防止触摸穿透
-                success: function () {},
-              });
-            },
-          });
         },
         fail: (err) => {
           this.setData({
