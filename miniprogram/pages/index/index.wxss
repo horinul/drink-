@@ -51,6 +51,9 @@
 .button2{
   background-color: #AD8D65;
 }
+.button3{
+  background-color: royalblue;
+}
 .icon1 {
   margin-left: 10rpx;
   width: 40rpx;
@@ -64,4 +67,11 @@
   height: 40rpx;
   background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E6%8F%90%E9%86%92.png?sign=8a0e7d6e8a9ff633b5ae7c7620da3e93&t=1622277733);
   background-size: 100% 100%;
+}
+.icon3{
+  margin-left: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-size: 100% 100%;
+  background-image: url(https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E6%8E%92%E8%A1%8C%E6%A6%9C_ranking.png?sign=08ecca6cc09410ab25179e579e98b905&t=1623660597);
 }

@@ -26,9 +26,9 @@
     </view>
   </navigator>
   <navigator url="../ranking/index" open-type="navigate" class="uploader-text" hover-class="none">
-    <view class="button button1">
+    <view class="button button3">
       饮茶排行
-      <view class="icon1"></view>
+      <view class="icon3"></view>
     </view>
   </navigator>
 </view>
