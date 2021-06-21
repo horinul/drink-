@@ -3,11 +3,11 @@
   <view class="title">
     <view class="titleFlex">
       <view class="titleText"></view>
-      <image src="{{isMuted?'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%9D%99%E9%9F%B3_volume-mute%20(1).png?sign=664c800a46fb039ff66ddd7f42987f2a&t=1622551190':'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E5%A3%B0%E9%9F%B3-%E5%A4%A7_volume-notice.png?sign=c2fb5614a205f12b62657a2abe2feed6&t=1622551247'}}" class="voiceIcon" bind:tap="changeMuted" />
+      <!-- <image src="{{isMuted?'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E9%9D%99%E9%9F%B3_volume-mute%20(1).png?sign=664c800a46fb039ff66ddd7f42987f2a&t=1622551190':'https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E5%A3%B0%E9%9F%B3-%E5%A4%A7_volume-notice.png?sign=c2fb5614a205f12b62657a2abe2feed6&t=1622551247'}}" class="voiceIcon" bind:tap="changeMuted" /> -->
     </view>
   </view>
   <view>
-    <video class="myVideo" src="https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/www.alltoall.net_%E3%80%90%E4%B8%87%E6%81%B6%E4%B9%8B%E6%BA%90%E3%80%91%E8%80%81%E6%9D%BF%E4%B8%8D%E4%BC%9A%E7%96%BC%E4%BD%A0%E7%9A%84%EF%BC%81%E9%A5%AE%E8%8C%B6%E5%85%88%EF%BC%81_O0PfG7qjYZ.mp4?sign=d2b54e43dcc3caa7e68c55a09ff962c2&t=1621949059" binderror="videoErrorCallback" show-center-play-btn='{{false}}' show-play-btn="{{false}}" controls='{{false}}' autoplay="{{true}}" loop="{{true}}" muted="{{isMuted}}"></video>
+    <video class="myVideo" src="https://636c-cloud1-5gde52mzca59cee4-1305972572.tcb.qcloud.la/%E6%88%91%E7%9A%84%E5%BD%B1%E7%89%87%201.mp4?sign=6fa1ba5554df2f936925e6c5e1821a81&t=1624269030" binderror="videoErrorCallback" show-center-play-btn='{{false}}' show-play-btn="{{false}}" controls='{{false}}' autoplay="{{true}}" loop="{{true}}" muted="{{isMuted}}"></video>
   </view>
   <!-- <view class="article">
     喂！三点钟啦！做乜野啊做！

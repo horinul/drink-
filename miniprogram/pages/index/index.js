@@ -12,6 +12,158 @@ Page({
     requestResult: "",
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse("open-data.type.userAvatarUrl"), // 如需尝试获取用户信息可改为false
+    // danmuList: [
+    //   {
+    //     text: "饮茶先啦",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "三点几啦",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "饮宾果茶咧",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "好久某嘿饮早茶啦",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "种🈚️饮茶",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "饮佐茶咩啊",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "打点水泡茶",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "点杯茶先啦",
+    //     color: "#fff",
+    //     time: 1,
+    //   },
+    //   {
+    //     text: "听日去饮点好茶",
+    //     color: "#fff",
+    //     time: 2,
+    //   },
+    //   {
+    //     text: "某做啦，三点啦",
+    //     color: "#fff",
+    //     time: 2,
+    //   },
+    //   {
+    //     text: "某做工啦",
+    //     color: "#fff",
+    //     time: 2,
+    //   },
+    //   {
+    //     text: "哪家的茶好饮咧",
+    //     color: "#fff",
+    //     time: 2,
+    //   },
+    //   {
+    //     text: "下午饮茶防瞌睡",
+    //     color: "#fff",
+    //     time: 2,
+    //   },
+    //   {
+    //     text: "伐第饮茶啦",
+    //     color: "#fff",
+    //     time: 2,
+    //   },
+    //   {
+    //     text: "今日饮乜野啊",
+    //     color: "#fff",
+    //     time: 2,
+    //   },
+    //   {
+    //     text: "点击饮茶",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "饮茶小助手解君愁",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "某做工啦",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "哪家的茶好饮咧",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "下午饮茶防瞌睡",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "饮宾果茶咧",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "好久某嘿饮早茶啦",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "种🈚️饮茶",
+    //     color: "#fff",
+    //     time: 3,
+    //   },
+    //   {
+    //     text: "饮茶饮茶啦",
+    //     color: "#fff",
+    //     time: 4,
+    //   },
+    //   {
+    //     text: "记得提醒饮茶哈",
+    //     color: "#fff",
+    //     time: 4,
+    //   },
+    //   {
+    //     text: "某做啦，三点啦",
+    //     color: "#fff",
+    //     time: 4,
+    //   },
+    //   {
+    //     text: "某做工啦",
+    //     color: "#fff",
+    //     time: 4,
+    //   },
+    //   {
+    //     text: "哪家的茶好饮咧",
+    //     color: "#fff",
+    //     time: 4,
+    //   },
+    //   {
+    //     text: "查看你的饮茶排行",
+    //     color: "#fff",
+    //     time: 4,
+    //   },
+    //   {
+    //     text: "记得投币！",
+    //     color: "#fff",
+    //     time: 4,
+    //   },
+    // ],
   },
 
   onLoad: function () {
@@ -55,27 +207,6 @@ Page({
       });
     }
   },
-
-  // onGetOpenid: function () {
-  //   // 调用云函数
-  //   wx.cloud.callFunction({
-  //     name: "login",
-  //     data: {},
-  //     success: (res) => {
-  //       console.log("[云函数] [login] user openid: ", res.result.openid);
-  //       app.globalData.openid = res.result.openid;
-  //       wx.navigateTo({
-  //         url: "../userConsole/userConsole",
-  //       });
-  //     },
-  //     fail: (err) => {
-  //       console.error("[云函数] [login] 调用失败", err);
-  //       wx.navigateTo({
-  //         url: "../deployFunctions/deployFunctions",
-  //       });
-  //     },
-  //   });
-  // },
 
   // 上传图片
   doUpload: function () {
