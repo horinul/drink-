@@ -33,7 +33,7 @@ async function sendSubscribeMessage(event) {
     filterMsg.map(async (message) => {
       const res = await cloud.openapi.subscribeMessage.send({
         touser: message._openid,
-        page: "pages/serverapi/serverapi",
+        pagepath: "pages/index/index",
         data: {
           thing3: {
             value: "珍惜今天的喝茶时光[doge]",
